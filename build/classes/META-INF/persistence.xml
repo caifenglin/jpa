@@ -2,10 +2,14 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="jpa" transaction-type="RESOURCE_LOCAL">
 	<!-- 配置ORM产品 Hibernate -->
-	<!-- 如果JPA的项目中只有一个JPA的实现，可以不用配置该节点<provider>org.hibernate.ejb.hibernatepersistence</provider>  -->
-	<!-- 我项目采用hibernate 5.3.6版本，经过查阅资料使用org.hibernate.jpa.HibernatePersistenceProvider -->
+	<!-- 
+		1. 实际上配置是 javax.persistence.spi.PersistenceProvider的实现类
+		2. 若如果JPA的项目中只有一个JPA的实现，可以不用配置该节点<provider>org.hibernate.ejb.hibernatepersistence</provider>  
+	-->
 	<!-- 实际实现的Persistence -->
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+	<!-- 添加持久类 -->
+	<class>cn.springbook.jpa.entity.Person</class>
 		<properties>
 			<!-- 连接数据库的基本信息 -->
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
