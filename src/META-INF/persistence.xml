@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="jpa">
+	<persistence-unit name="jpa" transaction-type="RESOURCE_LOCAL">
+	<!-- 配置ORM产品 Hibernate -->
+	<!-- 如果JPA的项目中只有一个JPA的实现，可以不用配置该节点<provider>org.hibernate.ejb.hibernatepersistence</provider>  -->
+	<!-- 我项目采用hibernate 5.3.6版本，未发现hibernate-entitymanager -->
+	<!-- 实际实现的Persistence -->
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/jpa"/>
+			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.password" value="root"/>
+		</properties>
 	</persistence-unit>
 </persistence>
